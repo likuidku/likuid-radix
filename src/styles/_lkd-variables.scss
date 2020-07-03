@@ -1,0 +1,314 @@
+// ----------------------------------------------
+// --- FONT
+// ----------------------------------------------
+
+$font-name:                             'Montserrat';
+@import                                 url('https://fonts.googleapis.com/css?family=#{$font-name}:100,300,400,700,900&display=swap');
+$font:                                  #{$font-name}, sans-serif;
+
+// ----------------------------------------------
+// --- THEME
+// ----------------------------------------------
+
+@import                                 './lkd-theme';
+
+// ----------------------------------------------
+// --- SWITCHERS
+// ----------------------------------------------
+
+$enable-mobile-first:                   false;                    
+$enable-dark-mode:                      false;
+$enable-txt-color-attributes:           true; 
+$enable-lkd-btn-colors:                 true;
+$enable-lkd-pill-colors:                true;
+$enable-lkd-card-colors:                true;
+
+// ----------------------------------------------
+// --- STYLES
+// ----------------------------------------------
+
+// ----------------------------------------------
+// --- BOX STYLES
+// ----------------------------------------------
+
+// --- MARGIN -----------------------------------
+
+$margin:                                1rem;
+
+$margin-s:                              $margin * .25;
+$margin-n:                              $margin * 2;
+$margin-m:                              $margin * 3;
+$margin-l:                              $margin * 6;
+$margin-b:                              $margin * 10;
+$margin-x:                              $margin * 12;   
+$margin-xx:                             $margin * 15;   
+
+// --- PADDING ----------------------------------
+
+$padding:                               .25rem;
+
+$padding-s:                             $padding * 2;
+$padding-m:                             $padding * 3;
+$padding-l:                             $padding * 4;
+$padding-b:                             $padding * 5;
+$padding-x:                             $padding * 6; 
+$padding-xl:                            $padding * 12;
+$padding-xx:                            $padding * 24;
+
+// --- RADIUS -----------------------------------
+
+$rounded-full:                          100%;
+$rounded-half:                          5rem;
+$corner:                                .25rem;
+$corner-s:                              .2rem;
+$corner-l:                              .3rem;
+$corner-r:                              1rem;  
+
+$corner-global:                         10px;
+
+// --- BORDER -----------------------------------
+
+$border-weight:                         .5px;
+$border-line:                           solid;
+$border-color:                          $clr-lgt;
+$global-border-normal:                  $border-weight $border-line $border-color;
+
+// --- SHADOWS ----------------------------------
+
+$shadow-normal:                         0 .06rem .25rem rgba($clr-sdw, .3);
+$shadow-hover:                          0 .03rem .15rem rgba($clr-sdw, .3);
+$shadow-active:                         inset $shadow-normal;
+$shadow-high:                           0 .2rem .5rem rgba($clr-sdw, .3);
+$shadow-fly:                            0 1.5rem 3rem rgba($clr-sdw, .3);
+
+// --- BACKGROUNDS ------------------------------
+
+$back-wht:                              $clr-wht;
+$back-lgt:                              lighten($clr-lgt, 10%);
+$back-gry:                              $clr-gry;
+$back-dark:                             $clr-drk;
+$back-color:                            $clr-pry;
+
+// --- DEPTH ------------------------------------
+
+$depth-base:                            1;
+
+$depth-far:                             scale($depth-base * .5);
+$depth-normal:                          scale($depth-base * 0);
+$depth-hover:                           scale($depth-base * .95);
+$depth-active:                          scale($depth-base * .9);
+$depth-near:                            scale($depth-base * 1.1);
+$depth-nariz:                           scale($depth-base * 2);
+
+// ----------------------------------------------
+// --- TYPOGRAPHY
+// ----------------------------------------------
+
+$text-color-lgt:                        $clr-lgt;
+$text-color-drk:                        $clr-drk;
+$text-color:                            $text-color-drk;
+$text-color-inverse:                    $text-color-lgt;
+$text-unselect:                         $clr-gry;
+$text-select:                           $clr-ext;
+
+// --- FONT SIZES -------------------------------
+
+$text-size:                             100%;
+
+$text-xsmall:                           $text-size * .6;
+$text-small:                            $text-size * .7;
+$text-base:                             $text-size * .8; 
+$text-default:                          $text-size * 1;         // Browser default usually (16px)
+$text-twenty:                           $text-size * 1.2;
+$text-medium:                           $text-size * 1.4;
+$text-large:                            $text-size * 1.6;
+$text-xlarge:                           $text-size * 1.8;
+$text-big:                              $text-size * 2;
+$text-xbig:                             $text-size * 3;
+$text-alaa:                             $text-size * 4;
+$text-wow:                              $text-size * 5;
+
+$text-pph:                              $text-large * 1.5;      // paragraphs
+$text-qut:                              $text-large;            // quotes
+$text-sbt:                              $text-xlarge;           // subtitles
+$text-tit:                              $text-xlarge * 1.5;     // titles
+$text-c2a:                              $text-xlarge * 2;       // big titles
+$text-wow:                              $text-xlarge * 3;       // big texts
+
+// --- LINE HEIGHT ------------------------------
+
+$line-height:                           1;
+
+// --- FONT WEIGHT ------------------------------
+
+$text-slim:                             100;
+$text-light:                            300;
+$text-mosca:                            400;
+$text-bold:                             700;
+$text-bolder:                           900;   
+
+// --- LETTER SPACING ---------------------------
+
+$spacing-p:                             .1rem;
+$spacing-s:                             .3rem;
+$spacing-t:                             .5rem;
+$spacing-h:                             1rem;
+
+// --- LINKS ------------------------------------
+
+$link-color:                            $clr-drk;
+$link-size:                             $text-default;
+$link-weight:                           $text-light;
+$link-weight-hover:                     $text-mosca;
+$link-spacing:                          1px;
+$link-spacing-hover:                    1.5px;
+$link-transform:                        capitalize;
+
+$link-child-color:                      $clr-drk;
+$link-child-size:                       $text-base;
+$link-child-weight:                     $text-light;
+$link-child-weight-hover:               $text-mosca;
+$link-child-active-color:               $clr-pry;
+$link-child-spacing:                    1px;
+$link-child-spacing-hover:              2.5px;
+$link-child-transform:                  capitalize;
+
+// ----------------------------------------------
+// --- TRANSITIONS
+// ----------------------------------------------
+
+$lkd-ani-time:                          .2s;
+$lkd-bezier:                            cubic-bezier(.17,1.1,.01,.9);
+$lkd-time-curve:                        $lkd-bezier $lkd-ani-time;
+$lkd-transition:                        all $lkd-time-curve;
+
+// ----------------------------------------------
+// --- FORMS
+// ----------------------------------------------
+
+$form-color-normal:                     $clr-drk;
+$form-color-light:                      $clr-lgt;
+$form-color-focus:                      $clr-pry;
+$form-color-error:                      $clr-dgr;
+$form-color-valid:                      $clr-pry;
+
+$form-text-size:                        $text-base;
+$form-text-message:                     $text-small;
+$form-text-weight:                      $text-mosca;
+$form-text-color:                       $form-color-normal;
+
+
+$form-radio-color:                      $clr-drk;
+
+$form-field-back-color:                 $clr-wht;
+
+$form-corner:                           5px;
+
+$form-shadow-focus:                     $shadow-normal;
+
+
+// ----------------------------------------------
+// --- COMPONENTS
+// ----------------------------------------------
+
+// ----------------------------------------------
+// --- LKD BUTTONS
+// ----------------------------------------------
+
+$lkd-btn-colors:                        $list-colors;
+$lkd-btn-color-default:                 'primary';
+$lkd-btn-text-color:                    $clr-wht;
+$lkd-btn-text-size:                     $text-base;
+$lkd-btn-text-weight:                   $text-mosca;
+$lkd-btn-text-spacing:                  $spacing-p;
+$lkd-btn-text-transform:                capitalize;
+$lkd-btn-corner:                        $corner-global; 
+$lkd-btn-padding-y:                     .5rem;
+$lkd-btn-padding-x:                     2.5rem;
+$lkd-btn-shadow-hover:                  $shadow-high;
+$lkd-btn-shadow-active:                 $shadow-active;
+
+// ----------------------------------------------
+// --- LKD PILLS
+// ----------------------------------------------
+
+$lkd-pill-colors:                       $list-colors;
+$lkd-pill-color-default:                'primary';
+$lkd-pill-padding-y:                    .2rem;
+$lkd-pill-padding-x:                    1.5rem;
+$lkd-pill-corner:                       $corner-global; 
+$lkd-pill-shadow:                       none;
+$lkd-pill-shadow-hover:                 $shadow-hover;
+$lkd-pill-text-color:                   $clr-wht;
+$lkd-pill-text-size:                    $text-small;
+$lkd-pill-text-weight:                  $text-slim;
+$lkd-pill-text-spacing:                 $spacing-s;
+$lkd-pill-text-transform:               capitalize;
+
+$lkd-pill-white-text:                   $clr-drk;
+$lkd-pill-white-border:                 $clr-drk;
+
+// ----------------------------------------------
+// --- CARDS
+// ----------------------------------------------
+
+$cards-corner:                          $corner-global;
+$cards-shadow:                          $shadow-high;
+$cards-shadow-hover:                    $shadow-normal;
+$cards-colors:                          'primary' 'secondary' 'info' 'success' 'alert' 'danger' 'extra' 'light' 'gray';
+$cards-text-size:                       $text-medium;
+$cards-num-size:                        $text-big;
+
+// ----------------------------------------------
+// --- KEY CARD
+// ----------------------------------------------
+
+$key-card-width:                        100%;
+$key-card-corner:                       $cards-corner;
+$key-card-shadow:                       $cards-shadow;
+$key-card-shadow-hover:                 $cards-shadow-hover;
+$key-card-text:                         $cards-text-size;
+$key-card-num:                          $cards-num-size;
+$key-card-img:                          3rem;
+$key-card-default-color:                'primary';
+
+// ----------------------------------------------
+// --- LAYOUTS
+// ----------------------------------------------
+
+// ----------------------------------------------
+// --- NAVBAR
+// ----------------------------------------------
+
+$navbar-back-color:                     $clr-wht;
+$navbar-text:                           $text-base;
+$navbar-text-color:                     $clr-drk;
+$navbar-text-color-active:              $clr-pry;
+$navbar-text-weight:                    $text-mosca;
+$navbar-padding-x:                      $padding-xl;
+$navbar-padding-y:                      0;
+$navbar-shadow:                         $shadow-high;
+
+// ----------------------------------------------
+// --- VIEWER
+// ----------------------------------------------
+
+$view-pad:                              20px;
+$view-pad-l:                            $view-pad * 2;
+$view-pad-r:                            $view-pad;
+$view-pad-t:                            $view-pad;
+$view-pad-b:                            $view-pad;
+
+// ----------------------------------------------
+// --- FOOTER
+// ----------------------------------------------
+
+$footer-back-color-1:                   darken($clr-sry, 20%);
+$footer-back-color-2:                   darken($clr-sry, 20%);
+
+// ----------------------------------------------
+// --- PAGES
+// ----------------------------------------------
+
+$login-back-color-1:                    darken($clr-pry, 15%);
+$login-back-color-2:                    darken($clr-sry, 10%);

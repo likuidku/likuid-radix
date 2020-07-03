@@ -1,0 +1,110 @@
+// ----------------------------------------------
+// --- LKD PILL
+// ----------------------------------------------
+
+// ----------------------------------------------
+// --- MIXIN
+// ----------------------------------------------
+
+@mixin lkd-pill($color: 'primary') {
+
+    // --- VARIABLES ----------------------------
+
+    $back-p:                    color($color);
+    $back-s:                    darken($back-p, 10%);
+    $text-color:                $lkd-pill-text-color;
+    $text-size:                 $lkd-pill-text-size;
+    $text-weight:               $lkd-pill-text-weight;
+    $text-spacing:              $lkd-pill-text-spacing;
+    $text-transform:            $lkd-pill-text-transform;
+
+    $corner:                    $lkd-pill-corner;
+    $shadow:                    $lkd-pill-shadow;
+    $shadow-hover:              $lkd-pill-shadow-hover;
+    
+    $padding-x:                 $lkd-pill-padding-x;
+    $padding-y:                 $lkd-pill-padding-y;
+    
+    $text-white:                $lkd-pill-white-text;
+    $border-white:              $lkd-pill-white-border;
+
+    // --- FONT ---------------------------------
+
+    @include lkd-text(
+        $text-color, 
+        $text-size,
+        $text-weight,
+        $text-spacing,
+        $text-transform
+    );
+    
+    // --- STYLES -------------------------------
+
+    @include lkd-flex($jus: center);
+
+    cursor:                     pointer;
+    position:                   relative;
+    display:                    inline-block;
+    padding:                    $padding-y $padding-x;
+    background-color:           $back-p;
+    border:                     .5px solid darken($back-p, 10%);
+    border-radius:              $corner;
+    transition:                 all .2s;
+
+    &:hover {
+
+        box-shadow:             $shadow-hover;
+    }
+
+    // --- WHITE ------------------------------
+
+    @if $color == 'white' {
+        color:                  $text-white;
+        border:                 .5px solid $border-white;
+    }
+
+    // --- DISABLED -----------------------------
+
+    &.disabled {
+        
+        background-color:       $clr-drk;
+        color:                  $clr-lgt;
+        opacity:                .3;
+
+        &:hover {
+
+            cursor:                 default;
+            padding:                $padding-y $padding-x;
+            background-image:       none;
+            background-color:       $clr-drk;
+            color:                  $clr-lgt;
+            clip-path:              polygon(0 30%, 30% 0, 100% 0, 100% 100%, 0 100%);
+            transform:              translateX(0);
+        }
+    }
+}
+
+// ----------------------------------------------
+// --- DEFAULT CLASS
+// ----------------------------------------------
+
+.lkd-pill {
+
+    @include lkd-pill($lkd-pill-color-default);
+}
+
+// ----------------------------------------------
+// --- GENERATOR
+// ----------------------------------------------
+
+@mixin lkd-pill-generator($colors) {
+
+    @each $color in $colors {
+
+        .lkd-pill.#{$color} {
+
+            @include lkd-pill($color);
+        }
+    }
+}
+

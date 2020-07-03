@@ -1,0 +1,97 @@
+@import '../../../../styles/lkd-commons';
+
+// ----------------------------------------------
+// --- MIXIN
+// ----------------------------------------------
+
+@mixin lkd-key-card($card-color) {
+
+    // --- VARIABLES ----------------------------
+
+    $width:                     $key-card-width;
+    $color:                     color($card-color);   
+    $corner:                    $key-card-corner;
+    $shadow:                    $key-card-shadow;
+    $shadow-hover:              $key-card-shadow-hover;
+    $border:                    .5px solid $color;
+    $back:                      transparentize($color, .9);
+    $text-size:                 $key-card-text;
+    $num-size:                  $key-card-num;
+    $img-size:                  $key-card-img;
+
+    // --- STYLES -------------------------------
+
+    @include                    lkd-flex($jus: space-between, $aln: flex-end);
+    position:                   relative;
+    width:                      $width;
+    padding:                    2rem;
+    border-radius:              $corner;
+    border:                     $border;
+    box-shadow:                 $shadow;
+    transition:                 all .2s;
+    background-color:           $back;
+
+    .text {
+        width:                  60%;
+
+        h3 {
+            @include            lkd-text($clr-drk, $text-size, $text-mosca, $transform: capitalize);
+            margin-bottom:      2rem;
+        }
+    
+        p {
+            @include            lkd-text($color, $num-size, $text-bold);
+        }
+    }
+
+    img {
+        width:                  40%;
+        max-height:             $img-size;
+    }
+
+    button {
+        cursor:                 pointer;
+        position:               absolute;
+        outline:                none;
+        top:                    10px;
+        right:                  10px;
+        width:                  15px;
+        height:                 15px;
+        border-radius:          100%;
+        border:                 $border;
+        transition:             all .2s; 
+
+        &:hover {
+            box-shadow:         $shadow-hover;
+            background-color:   $color;
+        }
+    }
+
+    &:hover {
+        box-shadow:             $shadow-hover;
+    }
+}
+// ----------------------------------------------
+// --- DEFAULT CLASS
+// ----------------------------------------------
+
+.lkd-key-card {
+    @include lkd-key-card($key-card-default-color);
+}
+
+// ----------------------------------------------
+// --- GENERATOR
+// ----------------------------------------------
+
+@mixin lkd-key-card-generator($colors) {
+    @each $color in $colors {
+
+        .lkd-key-card.#{$color} {
+            @include lkd-key-card($color);
+        }
+    }
+}
+
+@if $enable-lkd-card-colors {
+    @include lkd-key-card-generator($cards-colors);
+}

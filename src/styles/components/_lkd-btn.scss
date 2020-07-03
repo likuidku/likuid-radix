@@ -1,0 +1,148 @@
+// ----------------------------------------------
+// --- LKD BTN 
+// ----------------------------------------------
+
+// ----------------------------------------------
+// --- MIXIN
+// ----------------------------------------------
+
+@mixin lkd-btn($color: 'primary') {
+
+    // --- VARIABLES ----------------------------
+
+    $back-p:                    color($color);
+    $back-s:                    darken($back-p, 10%);
+
+    $text-color:                $lkd-btn-text-color;
+    $text-size:                 $lkd-btn-text-size;
+    $text-weight:               $lkd-btn-text-weight;
+    $text-spacing:              $lkd-btn-text-spacing;
+    $text-transform:            $lkd-btn-text-transform;
+
+    $corner:                    $lkd-btn-corner;
+    $padding-x:                 $lkd-btn-padding-x;
+    $padding-y:                 $lkd-btn-padding-y;
+    $shadow-hover:              $lkd-btn-shadow-hover;
+    $shadow-active:             $lkd-btn-shadow-active;
+
+    // --- FONT ---------------------------------
+
+    color:                      $text-color;
+    font-size:                  $text-size;
+    font-weight:                $text-weight !important;
+    letter-spacing:             $text-spacing;
+    text-transform:             $text-transform;
+    
+    // --- STYLES -------------------------------
+
+    cursor:                     pointer;
+    outline:                    none;
+    position:                   relative;
+    display:                    inline-block;
+    padding:                    $padding-y $padding-x;
+    background-image:           linear-gradient(to right bottom, $back-p, $back-s);
+    border-radius:              $corner;
+    border:                     none;
+    transition:                 all .2s;    
+
+    &:hover {
+        outline:                none;
+        background-image:       linear-gradient(to right bottom, $back-s, $back-p);
+        box-shadow:             $shadow-hover;
+    }
+
+    &:active {
+        box-shadow:             $shadow-active;
+    }
+
+    // --- WHITE CASE ---------------------------
+
+    @if $color == 'white' {
+        
+        &,
+        &:hover {
+
+            background-image:       none;
+            background-color:       $clr-wht;
+            color:                  $back-p;
+            box-shadow:             none;
+        }
+    }
+
+    // --- DISABLED -----------------------------
+
+    &.disabled {
+        
+        background-image:       none;
+        background-color:       $clr-drk;
+        color:                  $clr-lgt;
+        opacity:                .3;
+
+        &:hover,
+        &:active {
+
+            cursor:                 default;
+            padding:                $padding-y $padding-x;
+            background-image:       none;
+            background-color:       $clr-drk;
+            color:                  $clr-lgt;
+            box-shadow:             none;
+        }
+    }
+}
+
+// ----------------------------------------------
+// --- DEFAULT CLASS
+// ----------------------------------------------
+
+.lkd-btn {
+
+    @include lkd-btn($lkd-btn-color-default);
+}
+
+// ----------------------------------------------
+// --- GENERATOR
+// ----------------------------------------------
+
+@mixin lkd-btn-generator($colors) {
+    @each $color in $colors {
+
+        .lkd-btn.#{$color} {
+            @include lkd-btn($color);
+        }
+    }
+}
+
+// ----------------------------------------------
+// --- LKD BUTTON ICON
+// ----------------------------------------------
+
+.lkd-btn-icon {
+    @include                        lkd-flex($jus: center);
+    cursor:                         pointer;
+    outline:                        none;
+    width:                          35px;
+    height:                         35px;
+    padding:                        5px;
+    border:                         .5px solid $clr-pry;
+    border-radius:                  100%;
+    background-color:               $clr-wht;
+    transition:                     all .2s;
+
+    img {
+        max-width:                  80%;
+    }
+
+    &:hover {
+        box-shadow:                 $shadow-normal;
+        transition:                 all .2s;
+    }
+
+    &:active,
+    &.active {
+        box-shadow:                 $shadow-active;
+        transition:                 all .2s;
+    }
+
+}
+

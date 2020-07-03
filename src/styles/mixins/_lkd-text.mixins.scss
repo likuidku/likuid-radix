@@ -1,0 +1,109 @@
+// --------------------------------------------------
+// --- TYPOGRAPHY MIXINS
+// --------------------------------------------------
+
+@mixin lkd-text(
+    $color:             $text-color,
+    $size:              $text-base,
+    $weight:            $text-mosca,
+    $spacing:           0,
+    $line:              $line-height,
+    $transform:         none
+) {
+
+    color:              $color;
+    font-size:          $size;
+    font-weight:        $weight;
+    letter-spacing:     $spacing;
+    line-height:        $line;
+    text-transform:     $transform;
+} 
+
+@mixin lkd-text-link($type: 'link') {
+
+    @if $type == 'link' {
+
+        @include lkd-text(
+            $link-color,
+            $link-size,
+            $link-weight,
+            $link-spacing, 
+            $line-height,
+            $link-transform
+        );
+
+        &:hover {
+            font-weight:        $link-weight-hover;
+            letter-spacing:     $link-spacing-hover;
+            transition:         all .1s;
+        }
+
+        &:active,
+        &.active {
+            font-weight:        $link-weight-hover;
+            letter-spacing:     $link-spacing-hover;
+            transition:         all .1s;
+        }
+    }
+    @if $type == 'child' {
+        
+        @include lkd-text(
+            $link-child-color,
+            $link-child-size,
+            $link-child-weight,
+            $link-child-spacing, 
+            $line-height,
+            $link-child-transform
+        );
+
+        &:hover {
+            font-weight:        $link-weight-hover;
+            letter-spacing:     $link-spacing-hover;
+            transition:         all .1s;
+        }
+
+        &:active,
+        &.active {
+            color:              $link-child-active-color;
+            font-weight:        $link-weight-hover;
+            letter-spacing:     $link-spacing-hover;
+            transition:         all .1s;
+        }
+    }
+}
+
+@mixin lkd-title($color: $text-color, $transform: capitalize) {
+    @include lkd-text($color, $text-medium, $text-light, 0, $line-height, $transform);
+}
+
+// ----------------------------------------------
+// --- COLOR CLASSES
+// ----------------------------------------------
+
+@mixin lkd-text-colors($colors) {
+
+    @each $color in $colors {
+
+        .txt-#{$color} {
+
+            color: color($color);
+        }
+    }
+}
+
+@if $enable-txt-color-attributes {
+
+    @include lkd-text-colors($list-colors);
+}
+
+// ----------------------------------------------
+// --- GRADIENT TEXT
+// ----------------------------------------------
+
+@mixin lkd-text-gradient($color-1: $clr-pry, $color-2: $color-1, $ratio: 10%, $ang: 45deg) {
+
+    display:                    inline-block;
+    background:                 linear-gradient($ang, $color-1, $color-2);
+    background-clip:            text;
+    color:                      transparent; 
+}

@@ -1,0 +1,288 @@
+// ----------------------------------------------
+// --- VARIABLES
+// ----------------------------------------------
+
+$color-normal:                  $form-color-normal;
+$color-light:                   $form-color-light;
+$color-focus:                   $form-color-focus;
+$color-valid:                   $form-color-valid;
+$color-error:                   $form-color-error;
+
+$field-back-color:              $form-field-back-color;
+
+$border-color-normal:           $color-normal;
+$border-color-valid:            $color-valid;
+$border-color-error:            $color-error;
+
+$text-size:                     $form-text-size;
+$text-message:                  $form-text-message;
+$text-weight:                   $form-text-weight;
+
+$radio-color:                   $form-radio-color;
+
+$corner:                        $form-corner;
+
+$shadow-focus:                  $form-shadow-focus;
+
+// ----------------------------------------------
+// --- BOXES
+// ----------------------------------------------
+
+.lkd-form {
+    max-width:                  800px;
+    padding:                    2rem;
+    margin:                     0;
+    background-color:           $form-field-back-color;
+    border-radius:              $corner-global;
+    border:                     $global-border-normal;
+
+    .display-info {
+        @include                lkd-text($color-normal, $text-size, $text-weight);
+        width:                  100%;
+
+        h5 {
+            @include            lkd-text($color-error, $text-size, $text-weight, $transform: uppercase);
+            margin-bottom:      1rem;
+        }
+
+        ul li {
+            @include            lkd-flex($jus: space-between);
+            margin-bottom:      1rem;
+
+            p {
+                display:        inline-block;
+            }
+        }
+
+        .footer {
+            @include            lkd-flex($jus: space-between);
+            width:              100%;
+
+            button {
+                margin-top:     2rem;
+            }
+        }
+
+
+        &.small {
+            @include            lkd-text($color-normal, $text-small, $text-weight);
+            margin-bottom:      1rem;
+
+            ul {
+                @include        lkd-flex($jus: space-between);
+                
+                li {
+                    width:      40%;
+                }
+            }
+            
+        }
+    }
+}
+
+.lkd-form-search {
+    @extend                     .lkd-form;
+    padding:                    .5rem;
+    margin-bottom:              1rem;
+}
+
+.lkd-form-header {
+    @extend                     .lkd-form;
+    padding:                    1rem;
+    margin-bottom:              2rem;
+    box-shadow:                 $shadow-normal;
+
+    &.search {
+        @include                lkd-flex($jus: space-between);
+        
+        h3 {
+            width:              30%;
+        }
+
+        lkd-search-form {
+            width:              70%;
+        }
+
+    }
+}
+
+.lkd-form-title {
+    @include                    lkd-title();
+}
+
+.lkd-form-error {
+    @extend                     .lkd-form-header;
+    border:                     .5px solid $border-color-error;
+
+    h5 {
+        color:                  $color-error;
+    }
+
+    p {
+        margin:                 1rem 0;
+    }
+}
+
+
+// ----------------------------------------------
+// --- INPUTS
+// ----------------------------------------------
+
+.lkd-input {
+
+    @include                    lkd-text($color-normal, $text-size, $text-weight);
+    width:                      100%;
+    padding:                    .5rem;
+    border:                     none;
+    border-radius:              $corner;
+    border-bottom:              1px solid $border-color-normal;
+    background:                 $field-back-color;
+    font-family:                inherit;
+    transition:                 all .3s;
+
+    &::-webkit-input-placeholder {
+
+        color:                  $color-normal;
+    }
+
+    &:placeholder-shown ~ .lkd-input-label {
+
+        opacity:                0;
+        visibility:             hidden;
+        transform:              translateY(-100%);
+        transition:             all .5s;
+    }
+
+    &:focus {
+
+        outline:                none;
+        border-bottom:          1px solid $color-focus;
+        border-radius:          $corner;
+        box-shadow:             $shadow-focus;
+        transition:             all .2;
+    }
+
+    &.invalid {
+
+        border-bottom:          1px solid $color-error;
+
+        & ~ .lkd-input-label {
+
+            opacity:            1;
+            visibility:         visible; 
+            color:              $color-error;
+            transform:          translateY(0);
+            transition:         all .2s;
+        }
+    }
+
+    &.valid {
+
+        border-bottom:          1px solid $color-valid;
+
+        & ~ .lkd-input-label {
+
+            opacity:            1;
+            visibility:         visible; 
+            color:              $color-valid;
+            transform:          translateY(0);
+            transition:         all .2s;
+        }
+    }
+}
+
+.lkd-input-search {
+    @extend                     .lkd-input;
+
+    border:                     .5px solid $color-light;
+    border-radius:              $corner;
+    background:                 $field-back-color;
+    font-family:                inherit;
+    transition:                 all .3s;
+
+    &:focus {
+        border-bottom:          .5px solid $color-light;
+    }
+}
+
+.lkd-input-label {
+
+    @include                    lkd-text($color-focus, $size: $text-message);
+    display:                    block;
+    padding:                    .5rem;
+}
+
+.lkd-input-label-error {
+    font-size:                  $text-message;
+    color:                      $color-error;
+}
+
+
+
+// ----------------------------------------------
+// --- CHECKS
+// ----------------------------------------------
+
+.lkd-check-label {
+
+    @include                    lkd-text($color-normal, $text-size);
+}
+
+.lkd-check {
+
+    display:                    inline-box;
+    width:                      15px !important;
+    height:                     15px !important;
+}
+
+// ----------------------------------------------
+// --- RADIOS
+// ----------------------------------------------
+
+.lkd-radio-label {
+
+    @include                    lkd-flex();
+
+    .radio-button {
+
+        position:               relative;
+        display:                inline-block;
+        height:                 1.2rem;
+        width:                  1.2rem;
+        margin-right:           .3rem;
+        border:                 1px solid $radio-color;
+        border-radius:          50px;
+
+        &::after {
+
+            
+            @include            lkd-center();
+            content:            '';
+            display:            block;
+            height:             .6rem;
+            width:              .6rem;
+            border-radius:      50px;
+            background-color:   $radio-color;
+            opacity:            0;
+            transition:          opacity .2s;
+        }
+    }
+}
+
+.lkd-radio-input {
+    display:                    none;
+}
+
+.lkd-radio-input:checked ~ .lkd-radio-label .radio-button::after {
+
+    opacity:                    1;
+}
+
+// ----------------------------------------------
+// --- LABELS
+// ----------------------------------------------
+
+.lkd-error-label {
+    color:                      $color-error;
+}
+

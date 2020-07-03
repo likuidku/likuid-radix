@@ -1,0 +1,21 @@
+<div class="lkd-dropdown">
+  <a  class="drop-title" 
+      (click)="toggleDrop()" 
+      [routerLink]="config.item.link" 
+      routerLinkActive="active">
+        <img [src]="config.item.icon" alt="">
+        <p>{{config.item.name}}</p>
+  </a>
+  <ul class="items-block">
+    <li *ngFor="let nav of config.childs">
+      <a [routerLink]="[config.item.link, nav.link]" routerLinkActive="active" [ngClass]="{'drop-item': true, 'dropped': isDropped}">
+        <img [src]="nav.icon" alt="">
+        <p>{{nav.name}}</p>
+        <span>
+          »
+        </span>
+      </a>
+    </li>
+  </ul>
+  <div [ngClass]="{'line': true, 'dropped': isDropped}"></div>
+</div>

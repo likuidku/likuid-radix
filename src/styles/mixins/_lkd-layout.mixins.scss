@@ -1,0 +1,91 @@
+// ----------------------------------------------
+// --- MEDIA QUERYS
+// ----------------------------------------------
+
+$phone:                 37.5em;   // 600px
+$tablet:                56.25em;  // 900px
+$desktop:               75em;     // 1200px
+$wide:                  112.5em;  // 1800px
+
+// ----------------------------------------------
+// --- DESKTOP FIRST MIXINS
+// ----------------------------------------------
+
+@mixin df-phone   { @media (max-width: $phone)    { @content }; }
+@mixin df-tablet  { @media (max-width: $tablet)   { @content }; }
+@mixin df-desktop { @media (max-width: $desktop)  { @content }; }
+@mixin df-wide    { @media (min-width: $wide)     { @content }; }
+
+// ----------------------------------------------
+// --- MEDIA QUERY MANAGER
+// ----------------------------------------------
+
+@mixin lkd-df($breakpoint) {
+
+    @media (max-width: $breakpoint)    { @content };
+}
+
+// ----------------------------------------------
+// --- MOVILE FIRST MIXINS
+// ----------------------------------------------
+
+@mixin mf-phone   { @media (min-width: $phone)    { @content }; }
+@mixin mf-tablet  { @media (min-width: $tablet)   { @content }; }
+@mixin mf-desktop { @media (min-width: $desktop)  { @content }; }
+@mixin mf-wide    { @media (max-width: $wide)     { @content }; }
+
+// ----------------------------------------------
+// --- MEDIA QUERY MANAGER
+// ----------------------------------------------
+
+@mixin lkd-mf($breakpoint) {
+
+    @media (min-width: $breakpoint)    { @content };
+}
+
+// ----------------------------------------------
+// --- FLEX
+// ----------------------------------------------
+
+@mixin lkd-flex($dir: row, $jus: flex-start, $aln: center, $wrap: wrap, $flex: flex) {
+
+  display:              $flex;
+  flex-direction:       $dir;
+  justify-content:      $jus;
+  align-items:          $aln;
+  flex-wrap:            $wrap;
+}
+
+// ----------------------------------------------
+// --- POSITION
+// ---------------------------------------------- 
+
+@mixin lkd-center($top: 50%, $left: 50%, $x: -50%, $y: -50%) {
+  
+  position:             absolute;
+  top:                  $top;
+  left:                 $left;
+  transform:            translate($x, $y);
+}
+
+.lkd-screen {
+
+  z-index:              100;
+  overflow:             hidden;
+  width:                100vw;
+  height:               100vh;
+  position:             absolute;
+  top:                  0;
+  left:                 0;   
+}
+
+.lkd-main {
+  width:                      100vw;
+  height:                     100vh;
+  padding-top:                50px;
+}
+
+.lkd-footer {
+  width:                      100vw;
+  height:                     auto;
+}

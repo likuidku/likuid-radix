@@ -1,0 +1,227 @@
+// ----------------------------------------------
+// --- ANIMATIONS
+// ----------------------------------------------
+
+// ----------------------------------------------
+// --- X TRANSLATES
+// ----------------------------------------------
+
+@keyframes moveInLeftBounce {
+    
+    from {
+        opacity:        0;
+        transform:      translateX(-80%);
+    }
+    10% {
+        opacity:        .7;
+        transform:      translateX(-10%);
+    }
+    97% {
+        transform:      translateX(3%);
+    }
+    to {
+        opacity:        1;
+        transform:      translateX(0);
+    }
+}
+
+@keyframes moveInRightBounce {
+
+    from {
+        opacity:        0;
+        transform:      translateX(80%);
+    }
+    10% {
+        opacity:        .7;
+        transform:      translateX(10%);
+    }
+    97% {
+        transform:      translateX(-3%);
+    }
+    to {
+        opacity:        1;
+        transform:      translateX(0);
+    }
+}
+
+// ------------------------------------------
+// --- Y TRANSLATES
+// ------------------------------------------
+
+@keyframes moveInBottom {
+
+    from {
+        opacity:        0;
+        transform:      translateY(100%);
+    }
+    10% {
+        opacity:        .7;
+        transform:      translateY(10%);
+    }
+    97% {
+        transform:      translateY(-5%);
+    }
+    to {
+        opacity:        1;
+        transform:      translateY(0);
+    }
+}
+
+// ----------------------------------------------
+// --- FADE INS
+// ----------------------------------------------
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// ----------------------------------------------
+// --- DOTS 
+// ----------------------------------------------
+
+@keyframes appearDot {
+    from {
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+@keyframes appearDotItem {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@keyframes pulseDot {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+@keyframes pulseDotItem {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(.8);
+    }
+}
+@keyframes pulseDotBig {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(2);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+@keyframes pulseDotBigItem {
+    from {
+        transform: scale(.5);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+// --- MIXINS -----------------------------------
+
+@mixin pulseDot($t) {
+    animation-name: pulseDot;
+    animation-direction: alternate-reverse;
+    animation-duration: $t;
+    animation-iteration-count: infinite;
+}
+@mixin pulseDotBig($t) {
+    animation-name: pulseDotBig;
+    animation-duration: $t;
+    animation-iteration-count: infinite;
+}
+@mixin pulseDotItem($t) {
+    animation-name: pulseDotItem;
+    animation-direction: alternate-reverse;
+    animation-duration: $t;
+    animation-iteration-count: infinite;
+}
+@mixin pulseDotBigItem($t) {
+    animation-name: pulseDotBigItem;
+    animation-duration: $t;
+    animation-iteration-count: infinite;
+}
+@mixin appearDot($t, $d) {
+    animation-name: appearDot;
+    animation-delay: $d;
+    animation-duration: $t;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+@mixin appearDotItem($t) {
+    animation-name: appearDotItem;
+    animation-duration: $t;
+    animation-fill-mode: both;
+}
+@mixin dot($top: top, $right: right, $side: width, $t: animation-duration, $d: animation-delay, $clr: $clr-pry) {
+    $c: $clr;
+    $unit: $side / 3;
+    position: absolute;
+    top: $top;
+    right: $right;
+    width: $side;
+    height: $side;
+    border: 1px solid $c;
+    box-shadow: 0 0 5px 0 $c, inset 0 0 5px 0 $c;
+    border-radius: 100%;
+    @include appearDot($t, $d);
+    .dot-in {
+        position: absolute;
+        left: $unit - 1px;
+        top: $unit - 1px;
+        width: $unit;
+        height: $unit;
+        background-color: $c;
+        border-radius: 100%;
+        box-shadow: 0 0 $unit 0 $c;
+        @include pulseDot($t);
+    }
+    .note {
+        position: absolute;
+        top: $side / 2;
+        left: $side * 1.2;
+        width: 200px;
+        color: $c;
+        font-size: $side * .5;
+        opacity: .3;
+    }
+    &:hover {
+        .note {
+            opacity: 1;
+        }
+    }
+}

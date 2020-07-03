@@ -1,0 +1,17 @@
+@import '../../../styles/lkd-commons';
+
+.lkd-heading {
+    @include                    lkd-flex($jus: space-between);
+    width:                      100%;
+    padding:                    $view-pad-t $view-pad-l 10px;
+    background-color:           transparentize($clr-sry, .98);
+    border-bottom:              .5px solid $clr-lgt;
+
+    h3 {
+        @include                lkd-text($color: $clr-sry, $weight: $text-light, $spacing: 2px, $transform: uppercase);
+    }
+
+    .lkd-search {
+        width:                  250px;
+    }
+}

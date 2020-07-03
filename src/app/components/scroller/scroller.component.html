@@ -1,0 +1,83 @@
+<div class="scroll-header">
+    <div class="top">
+        <div class="title">
+            <h3 class="lkd-form-title">{{main}}{{total}}</h3>
+        </div>
+        <div class="scroll-controls">
+            <div class="lkd-control backward" (click)="goToTop()">
+                <img src="../../../assets/images/double-arrow.svg" alt="go to top">
+            </div>
+            <div class="lkd-control middle" (click)="goToMiddle()">=</div>
+            <div class="lkd-control forward" (click)="goToBottom()">
+                <img src="../../../assets/images/double-arrow.svg" alt="go to bottom">
+            </div>
+        </div>
+    </div>
+    <div class="scroll-titles">
+        <ul class="column-titles">
+            <li class="item-index">#</li>
+            <li *ngFor="let column of columns" class="item-word">{{ column }}</li>
+            <li *ngFor="let icon of config.icons" class="item-icon"><img src="{{icon}}"></li>
+        </ul>
+    </div>
+</div>
+
+
+<cdk-virtual-scroll-viewport itemSize="40" class="lkd-scroller" *ngIf="config.main === 'Users'">
+
+    <div 
+        class="lkd-scroller-item" 
+        *cdkVirtualFor="let item of items; let i = index; let c = count">
+
+        <ul class="item-box" (click)="editItem(i)">
+
+            <li class="item-index">{{ i + 1 }}</li>
+            <li class="item-word">{{ item.name }}</li>
+            <li class="item-word">{{ item.email }}</li>
+            <li class="item-word">{{ item.subscription.name }}</li>
+            <li class="item-icon last">{{ item.language }}</li>
+
+            <li class="item-icon last">
+                <div *ngIf="item.active" class="item-active"></div>
+                <div *ngIf="!item.active" class="item-blocked"></div>
+            </li>
+
+            <li class="item-icon last">
+                <div *ngIf="item.online" class="item-active"></div>
+                <div *ngIf="!item.online" class="item-blocked"></div>
+            </li>
+            
+            <li class="item-icon">
+                <img *ngIf="item.role === 'SUPER_ROLE'" src="../../../assets/icons/super.svg" alt="inspector">
+                <img *ngIf="item.role === 'USER_ROLE'" src="../../../assets/icons/laptop-black.svg" alt="user">
+                <img *ngIf="item.role === 'ADMIN_ROLE'" src="../../../assets/icons/config-black.svg" alt="admin">
+                <img *ngIf="item.role === 'INSPECTOR_ROLE'" src="../../../assets/icons/location-black.svg"
+                    alt="inspector">
+            </li>
+        </ul>
+    </div>
+
+</cdk-virtual-scroll-viewport>
+
+<cdk-virtual-scroll-viewport itemSize="40" class="lkd-scroller" *ngIf="config.main === 'Subscriptions'">
+
+    <div 
+        class="lkd-scroller-item" 
+        *cdkVirtualFor="let item of items; let i = index">
+
+        <ul class="item-box" (click)="editItem(i)">
+
+            <li class="item-index">{{ i + 1 }}</li>
+            <li class="item-word">{{ item.name }}</li>
+            <li class="item-word">{{ item.email }}</li>
+            <li class="item-word">{{ item.contact }}</li>
+            <li class="item-word">{{ item.phone }}</li>
+
+            <li class="item-icon">
+                <div *ngIf="item.active" class="item-active"></div>
+                <div *ngIf="!item.active" class="item-blocked"></div>
+            </li>
+        </ul>
+    </div>
+
+</cdk-virtual-scroll-viewport>

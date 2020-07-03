@@ -1,0 +1,11 @@
+<div class="lkd-heading">
+    <h3>
+        <ng-content select="[title]"></ng-content>
+    </h3>
+    <div class="pagination">
+        <ng-content select="[pagination]"></ng-content>
+    </div>
+    <div class="lkd-search" *ngIf="search">
+        <lkd-search-form></lkd-search-form>
+    </div>
+</div>

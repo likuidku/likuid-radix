@@ -1,0 +1,22 @@
+// --------------------------------------------------
+// --- STYLE FUNCTIONS
+// --------------------------------------------------
+
+@function lkd-link($color, $state: 'noactive') {
+
+    $link: transparentize($color, .5);
+    @if $state == active {
+        $link: $color;
+    }
+    @return $link;
+}
+
+// ----------------------------------------------
+// --- COLOR GETTER
+// ----------------------------------------------
+
+@function color($color) {
+
+    $get-color: map-get($theme-active, $color);
+    @return $get-color;
+}

@@ -1,0 +1,81 @@
+// ----------------------------------------------
+// --- THEMES
+// ----------------------------------------------
+
+$theme-colors-aiplug: (
+    'primary':                  #ff8800,
+    'secondary':                #5614d1,
+    'info':                     #4c00ff,
+    'success':                  #22a116,
+    'alert':                    #fca400,
+    'danger':                   #ff0000,
+    'dark':                     #344b65,
+    'light':                    #dcdcdc,
+    'white':                    #fcfcfc,
+    'gray':                     #aeaeae,
+    'shadow':                   #000000bb,
+    'extra':                    #5fb323,
+);
+
+$theme-colors-mplug: (
+    'primary':                  #ff004c,
+    'secondary':                #571991,
+    'info':                     #2805c5,
+    'success':                  #00c707,
+    'alert':                    #ff9900,
+    'danger':                   #e42020,
+    'dark':                     #353535,
+    'light':                    #e1e1e1,
+    'white':                    #fcfcfc,
+    'gray':                     #a9a9a9,
+    'shadow':                   #000000bb,
+    'extra':                    #0099ff,
+);
+
+$theme-colors-vivace: (
+    'primary':                  #1fc6c3,
+    'secondary':                #a00f5a,
+    'info':                     #007bff,
+    'success':                  #14df02,
+    'alert':                    #ff9900,
+    'danger':                   #ff0000,
+    'dark':                     #353535,
+    'light':                    #e1e1e1,
+    'white':                    #fcfcfc,
+    'gray':                     #a9a9a9,
+    'shadow':                   #000000bb,
+    'extra':                    #6aff00,
+);
+
+// ---------------------------------------------
+// --- THEME SELECTOR
+// ---------------------------------------------
+
+$theme-active:                  $theme-colors-mplug;
+
+// ---------------------------------------------
+// --- COLORS EXTRATOR
+// ---------------------------------------------
+
+$clr-pry:                       map-get($theme-active, 'primary');
+$clr-sry:                       map-get($theme-active, 'secondary');
+$clr-inf:                       map-get($theme-active, 'info');
+$clr-scs:                       map-get($theme-active, 'success');
+$clr-alr:                       map-get($theme-active, 'alert');
+$clr-dgr:                       map-get($theme-active, 'danger');
+$clr-ext:                       map-get($theme-active, 'extra');
+$clr-gry:                       map-get($theme-active, 'gray');
+$clr-sdw:                       map-get($theme-active, 'shadow');
+$clr-drk:                       map-get($theme-active, 'dark');
+$clr-wht:                       map-get($theme-active, 'white');
+$clr-lgt:                       map-get($theme-active, 'light');
+
+// ----------------------------------------------
+// --- LIST COLORS
+// ----------------------------------------------
+
+$list-colors:                   'primary' 'secondary' 'info' 'success' 'alert' 'danger' 'extra' 'white' 'dark' 'light' 'gray';
+
+
+
+

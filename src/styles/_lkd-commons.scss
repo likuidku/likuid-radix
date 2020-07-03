@@ -1,0 +1,133 @@
+// ----------------------------------------------
+// --- PARTIALS 
+// ----------------------------------------------
+
+@import './lkd-variables';
+@import './lkd-functions';
+@import './lkd-mixins';
+@import './lkd-components';
+@import './lkd-animations';
+
+// ----------------------------------------------
+// --- GLOBAL PRESETS
+// ----------------------------------------------
+
+*,
+*::after,
+*::before {
+
+    padding:            0;
+    margin:             0;
+    list-style:         none;
+    box-sizing:         inherit;
+}
+
+html {
+
+    @if $enable-mobile-first == false {
+
+        // --- DESKTOP FIRST APPROACH ---------------
+    
+        @include df-wide {
+            font-size:      112.5%;     // 1rem = 18px
+        }
+    
+        @include df-desktop {
+            font-size:      100%;       // 1rem = 16px
+        }
+    
+        @include df-tablet {
+            font-size:      87.5%;      // 1rem = 14px
+        }
+    
+        @include df-phone {
+            font-size:      75%;        // 1rem = 12px
+        }
+    }
+    @else {
+        
+        // --- MOBILE FIRST APPROACH -----------------
+    
+        @include mf-phone {
+            font-size:      75%;        // 1rem = 12px
+        }
+    
+        @include mf-tablet {
+            font-size:      87.5%;      // 1rem = 14px
+        }
+    
+        @include mf-desktop {
+            font-size:      100%;       // 1rem = 16px
+        }
+    
+        @include mf-wide {
+            font-size:      112.5%;     // 1rem = 18px
+        }
+    }
+}
+
+body {
+
+    font-family:        $font;
+    font-weight:        $text-mosca;
+    // line-height:        $line-height;
+    color:              $text-color;
+    box-sizing:         border-box;
+}
+
+a {
+
+    text-decoration:    none;
+    color:              $clr-inf;
+}
+
+input,
+button {
+    font-family:        $font;
+}
+
+.logo {
+    @include lkd-text-gradient($clr-wht, transparentize($clr-wht, .5), $ratio: 0);
+    font-weight:    $text-mosca;
+    font-size:      $text-big;
+    &.navbar {
+        @include lkd-text-gradient($clr-sry, $clr-pry, $ratio: 0);
+        font-weight:    $text-bold;
+        font-size:      $text-default;
+    }
+    &.color {
+        @include lkd-text-gradient($clr-pry, $clr-ext, $ratio: 0);
+    }
+    &.plain {
+        @include lkd-text-gradient($clr-sry, $clr-pry, $ratio: 0);
+        font-weight:    $text-bold;
+        font-size:      $text-big;
+    }
+    &.sry {
+        @include lkd-text-gradient($clr-pry, $clr-sry, $ratio: 0);
+    }
+    &.ext {
+        @include lkd-text-gradient($clr-ext, $clr-ext, $ratio: 0);
+    }
+}
+
+.lkd-layer {
+    box-shadow:                 $shadow-normal;
+
+    &:hover {
+        box-shadow:             $shadow-hover;
+    }
+
+    &:active {
+        box-shadow:             $shadow-active;
+    }
+}
+
+.lkd-cards-wrapper {
+    @include lkd-flex();
+
+    lkd-key-card {
+        width:                  30%;
+        margin-left:            1rem;
+    }
+}

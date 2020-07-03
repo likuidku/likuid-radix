@@ -1,0 +1,13 @@
+<div [ngClass]="{'lkd-polybtn-box': true, 'active': isActive}">
+  <div class="poly" *ngIf="color">
+    <img class="wire" src="./assets/vectors/box-wire-full.svg">
+    <img class="cube" src="./assets/vectors/m-plug-cube.svg">
+  </div>
+  <div class="poly" *ngIf="!color">
+    <img class="wire" src="./assets/vectors/box-wire-full-white.svg" alt="">
+    <img class="cube" src="./assets/vectors/m-plug-cube.svg">
+  </div>
+  <h3 [ngClass]="{'hidden': content}">
+    <ng-content></ng-content>
+  </h3>
+</div>

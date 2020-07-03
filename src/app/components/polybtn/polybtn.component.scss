@@ -1,0 +1,111 @@
+@import '../../../styles/lkd-commons';
+
+.lkd-polybtn-box {
+    @include                        lkd-flex(column);
+    cursor:                         pointer;
+    width:                          auto;
+
+    .poly {
+        @include                    lkd-flex($jus: center);
+        position:                   relative;
+        width:                      6rem;
+        height:                     6rem;
+        max-width:                  100%;
+        max-height:                 100%;
+        
+        .wire  {
+            position:               absolute;
+            z-index:                10;
+            width:                  100%;
+            height:                 100%;
+            transition:             all $lkd-bezier .3s;
+            transition-delay:       0s;
+        }
+
+        .cube {
+            position:               absolute;
+            width:                  50%;
+            height:                 50%;
+            transition:             all $lkd-bezier 1s;
+            transition-delay:       .2s;
+        }
+    }
+
+    h3 {
+        overflow:                   hidden;   
+        margin-top:                 1rem;
+        transition:                 all $lkd-bezier 3s;
+
+        &.hidden {
+            transform:              translateY(6rem);
+        }
+    }
+
+    &:hover {
+        .poly {
+            .wire {
+                transform:          scale(1.2);
+                transition:         all $lkd-bezier .5s;
+                transition-delay:   .2s;
+                
+            }
+    
+            .cube {
+                transform:          scale(1.3);
+                transition:         all $lkd-bezier .3s;
+                transition-delay:   0s;
+            }
+        }
+
+        h3 {
+
+            transform:              translateY(1rem);
+            color:                  $clr-ext;
+        }
+    }
+
+    &.active {
+        .poly {
+            .wire {
+                transform:          scale(1.5);
+                transition:         all $lkd-bezier 1s;
+                transition-delay:   .5s;
+            }
+
+            .cube {      
+                transform:          scale(1.5);
+            }
+        }
+
+        h3 {
+            transform:              translateY(6rem);
+        }
+
+    }
+
+    @include df-phone {
+        $redux:                     .9; // reduction factor (must be odd)
+        width:                      15rem * $redux;
+        height:                     15rem * $redux;   
+        
+        .poly {
+            width:                  6rem * $redux;
+            height:                 6rem * $redux;
+
+            .wire  {
+                width:              6rem * $redux;
+                height:             6rem * $redux;
+            }
+
+            .cube {
+                top:                1rem * $redux;
+                left:               1rem * $redux;
+                width:              4rem * $redux;
+                height:             4rem * $redux;
+                transform:          scale(.5 * $redux);
+                transition:         all .5s;
+                transition-delay:   .1s;
+            }
+        }
+    }
+}
